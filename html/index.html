@@ -7,12 +7,16 @@
     <title>テストモデル一覧</title>
 
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   </head>
 
   <body>
     <div x-data="{ items: [] }" x-init="items = await (await fetch('/models')).json()">
       <template x-for="item in items">
-        <div x-text="item.name"></div>
+        <div>
+          <div x-text="item.name"></div>
+          <model-viewer :src="'/model/' + item.name + '.glb'" shadow-intensity="1" camera-controls camera-orbit="30deg 75deg 105%"></model-viewer>
+        </div>
       </template>
     </div>
   </body>

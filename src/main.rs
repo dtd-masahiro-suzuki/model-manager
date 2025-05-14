@@ -27,13 +27,13 @@ async fn hello() -> Html<&'static str> {
 async fn models() -> Json<Vec<Model>> {
     let models = vec![
         Model {
-            name: "hello.stl".to_string(),
+            name: "3ZY-6MXK9.SLDPRT".to_string(),
         },
         Model {
-            name: "hello.stl".to_string(),
+            name: "3ZY-R8K8B.par".to_string(),
         },
         Model {
-            name: "hello.stl".to_string(),
+            name: "NeilArmstrong".to_string(),
         },
     ];
     Json(models)
