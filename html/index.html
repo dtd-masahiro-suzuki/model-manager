@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sketch</title>
+    <title>テストモデル一覧</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
   </head>
 
   <body>
-    <script src="sketch.js"></script>
+    <div x-data="{ items: [] }" x-init="items = await (await fetch('/models')).json()">
+      <template x-for="item in items">
+        <div x-text="item.name"></div>
+      </template>
+    </div>
   </body>
 </html>
