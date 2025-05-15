@@ -8,13 +8,35 @@
 
     <script src="//unpkg.com/alpinejs" defer></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+    <style>
+      .item {
+        width: 350px;
+        height: 350px;
+        position: relative;
+        color: gray;
+        border-style: solid;
+        border-width: 1px;
+        border-color: lightgray;
+        margin: 1px;
+      }
+      model-viewer {
+        width: 100%;
+        height: 100%;
+      }
+      .info {
+        position: absolute;
+        z-index: 1;
+        padding: 0.5em;
+      }
+    </style>
   </head>
 
   <body>
     <div x-data="{ items: [] }" x-init="items = await (await fetch('/models')).json()">
       <template x-for="item in items">
-        <div>
-          <div x-text="item.name"></div>
+        <div class="item">
+          <div class="info" x-text="item.name"></div>
           <model-viewer :src="'/model/' + item.name + '.glb'" shadow-intensity="1" camera-controls camera-orbit="30deg 75deg 105%"></model-viewer>
         </div>
       </template>
